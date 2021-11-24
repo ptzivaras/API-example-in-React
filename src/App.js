@@ -18,8 +18,10 @@ function App() {
     const response = await fetch(`https://api.edamam.com/search?q=chicken&app_id=${APP_ID}&app_key=${APP_KEY}`);//make a request and wait for it
     const data = await response.json();//we waited, we fetch data and we format it 
     setRecipes(data.hits);
+    console.log(data.hits);
   }
 
+  //pass info from component->props->component
   return (
     <div className="App">
        <form className="search-form">
@@ -28,6 +30,13 @@ function App() {
             Search
          </button>
        </form>
+       {recipes.map(recipe => (//recipe is an array, map it
+         <Recipe
+          title={recipe.recipe.label}
+          calories={recipe.recipe.calories}
+          image={recipe.recipe.image}
+         />
+       ))}
     </div>
   );
 }
