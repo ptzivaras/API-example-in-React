@@ -12,6 +12,7 @@ function App() {
 
   useEffect( () =>{
     console.log('Effect has been run');
+    getRecipes();//
   }, []);
 
   const getRecipes = async () => {
@@ -19,14 +20,14 @@ function App() {
     const data = await response.json();//we waited, we fetch data and we format it 
     setRecipes(data.hits);
     console.log(data.hits);
-  }
+  };
 
   //pass info from component->props->component
   return (
     <div className="App">
        <form className="search-form">
-         <input className="search-bar"type="text"/>
-         <button className="search-button"type="submit">
+         <input className="search-bar" type="text"/>
+         <button className="search-button" type="submit">
             Search
          </button>
        </form>
@@ -39,6 +40,6 @@ function App() {
        ))}
     </div>
   );
-}
+};
 
 export default App;

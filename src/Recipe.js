@@ -8,6 +8,6 @@ const Recipe = ({title,calories,image}) => {
             <img src={image} alt=""/>
         </div>
     );
-}
+};
 
 export default Recipe;
